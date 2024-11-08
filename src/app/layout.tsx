@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>
+        <body className={MitrFont.className}>
           <main className="px-10 lg:px-6 flex-1">
             <div className="fixed right-10 top-5">
               <UserButton

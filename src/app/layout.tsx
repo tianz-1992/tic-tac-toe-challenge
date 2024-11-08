@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/Toaster";
 import { ClerkProvider, UserButton } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Mitr } from "next/font/google";
@@ -33,6 +34,8 @@ export default function RootLayout({
               />
             </div>
             {children}
+
+            <Toaster richColors />
           </main>
         </body>
       </html>

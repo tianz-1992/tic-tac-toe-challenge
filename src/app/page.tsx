@@ -1,10 +1,11 @@
+import ModeBot from "@/components/ModeBot";
+import ScrollGame from "@/components/ScrollGame";
 import SwitchXO from "@/components/SwitchXO";
 import { cn } from "@/utils";
-import { auth } from "@clerk/nextjs/server";
 import { IconArrowRight } from "@tabler/icons-react";
+import Link from "next/link";
 
 export default async function HomePage() {
-  const { userId } = await auth();
 
   return (
     <div className="flex flex-col items-center flex-1 justify-center min-h-screen text-context gap-y-8">
@@ -14,19 +15,27 @@ export default async function HomePage() {
       >
         Challenge - Tic Tac Toe
       </label>
+
+      <ScrollGame />
       <div className="flex flex-col gap-y-6 border-2 w-full max-w-md p-4 rounded-lg shadow-lg">
         <div className="font-semibold text-center">
           เลือกสัญลักษณ์สำหรับผู้เล่น
         </div>
 
         <SwitchXO />
-
         <small className="text-center text-gray-400">
           หมายเหตุ: <span className="text-bold">X</span> จะเป็นผ่ายเริ่มก่อน
         </small>
+
+        <hr />
+        <label htmlFor="mode" className="flex justify-center font-semibold">
+          ระดับความยาก
+        </label>
+        <ModeBot />
       </div>
 
-      <div
+      <Link
+        href={"/game"}
         className={cn(
           "flex items-center space-x-2 justify-center",
           "cursor-pointer px-4 py-2 rounded-md bg-primary/50 text-white",
@@ -35,7 +44,7 @@ export default async function HomePage() {
       >
         <span>Start</span>
         <IconArrowRight size={18} />
-      </div>
+      </Link>
     </div>
   );
 }

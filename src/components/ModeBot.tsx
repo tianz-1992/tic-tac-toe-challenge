@@ -2,11 +2,10 @@
 
 import useGameStore from "@/stores/game.store";
 import { cn } from "@/utils";
-import { IconCircle, IconX } from "@tabler/icons-react";
 
-const SwitchXO = () => {
-  const player = useGameStore((state) => state.player);
-  const setPlayer = useGameStore((state) => state.setPlayer);
+const ModeBot = () => {
+  const mode = useGameStore((state) => state.mode);
+  const setMode = useGameStore((state) => state.setMode);
 
   return (
     <div className="flex justify-center items-center">
@@ -14,24 +13,24 @@ const SwitchXO = () => {
         <div
           className={cn(
             "inline-flex items-center justify-center rounded-lg w-full h-full cursor-pointer",
-            player === "X" && "text-white bg-primary shadow-lg"
+            mode === "easy" && "text-white bg-primary shadow-lg"
           )}
-          onClick={() => setPlayer("X")}
+          onClick={() => setMode("easy")}
         >
-          <IconX size={32} stroke={4} />
+          ง่าย
         </div>
         <div
           className={cn(
             "inline-flex items-center justify-center rounded-lg w-full h-full cursor-pointer",
-            player === "O" && "text-white bg-primary shadow-lg"
+            mode === "hard" && "text-white bg-primary shadow-lg"
           )}
-          onClick={() => setPlayer("O")}
+          onClick={() => setMode("hard")}
         >
-          <IconCircle size={32} stroke={4} />
+          ยาก
         </div>
       </div>
     </div>
   );
 };
 
-export default SwitchXO;
+export default ModeBot;

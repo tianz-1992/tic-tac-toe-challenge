@@ -42,7 +42,7 @@ export default async function HomePage() {
           "duration-150 hover:bg-primary hover:text-white hover:shadow-lg"
         )}
       >
-        <span>Start</span>
+        <span>เริ่มเกม</span>
         <IconArrowRight size={18} />
       </Link>
     </div>

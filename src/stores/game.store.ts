@@ -32,6 +32,7 @@ const useGameStore = create<GameStoreType>()(
       set((state) => {
         state.result = null;
         state.board = initialBoard;
+        state.isLoading = false;
       });
     },
     setIsLoading: (val: boolean) => {
@@ -88,19 +89,24 @@ const useGameStore = create<GameStoreType>()(
           )
         );
 
+        const botWinner = CheckWinner(updatedBoard);
+
         setTimeout(() => {
-          const botWinner = CheckWinner(updatedBoard);
           set((state) => {
             state.board = updatedBoard;
-            state.result = botWinner;
+            state.result =
+              botWinner ||
+              (!updatedBoard.some((row) => row.some((cell) => cell === null))
+                ? "D"
+                : null);
             state.isLoading = false;
           });
         }, 1000);
-      } else {
-        set((state) => {
-          state.isLoading = false;
-        });
       }
+
+      set((state) => {
+        state.isLoading = false;
+      });
     },
     setBoard: (board: BoardArrayProps) => {
       set((state) => {

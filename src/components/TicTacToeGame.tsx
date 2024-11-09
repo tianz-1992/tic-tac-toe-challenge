@@ -28,6 +28,7 @@ export const TicTacToeBoard = () => {
 
   useEffect(() => {
     if (!resultGame || !user) return;
+    setIsLoading(true);
 
     let showToast = true;
 
@@ -74,8 +75,10 @@ export const TicTacToeBoard = () => {
       }
     }
 
-    resetBoard();
-  }, [resultGame, player, user]);
+    setTimeout(() => {
+      resetBoard();
+    }, 2000);
+  }, [resultGame]);
 
   const activeBotFirst = () => {
     setIsLoading(true);

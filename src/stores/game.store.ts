@@ -103,10 +103,7 @@ const useGameStore = create<GameStoreType>()(
           });
         }, 1000);
       }
-
-      set((state) => {
-        state.isLoading = false;
-      });
+ 
     },
     setBoard: (board: BoardArrayProps) => {
       set((state) => {

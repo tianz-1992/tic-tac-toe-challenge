@@ -24,7 +24,7 @@ export const TicTacToeBoard = () => {
     if (player === "O" && !resultGame) {
       activeBotFirst();
     }
-  }, [player]);
+  }, [player, resultGame]);
 
   useEffect(() => {
     if (!resultGame || !user) return;
